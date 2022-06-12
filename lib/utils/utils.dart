@@ -50,7 +50,6 @@ void descargarMp3(Params params) async {
       params.sendPort.send(progres);
     });
   } catch (e) {
-    print(e);
     params.sendPort.send(e.toString());
   }
 }

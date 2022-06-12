@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     TiposDescarga(
       selected: true,
       title: "YouTube",
-      url: "https://api.akuari.my.id/downloader/yt1?link=",
+      url: "https://api.akuari.my.id/downloader/youtube?link=",
     ),
     TiposDescarga(
         title: "TikTok",
@@ -133,17 +133,17 @@ class _HomePageState extends State<HomePage> {
 
         switch (tiposDescarga[selectTipo].title) {
           case "YouTube":
-            if (resultado["mp3"] != null) {
+            if (resultado["audio"] != null) {
               existMp3 = true;
-              foto = resultado["mp3"]["thumbb"];
-              nombreDescarga = resultado["mp3"]["title"];
+              foto = resultado["thumb"];
+              nombreDescarga = resultado["title"];
             }
             if (resultado["mp4"] != null) {
               existMp4 = true;
-              foto = resultado["mp3"]["thumbb"];
-              nombreDescarga = resultado["mp3"]["title"];
+              foto = resultado["thumb"];
+              nombreDescarga = resultado["title"];
             }
-            urlDescarga = resultado["mp3"]["result"];
+            urlDescarga = resultado["audio"];
             quieroMp3 = true;
             quieroVideo = false;
             existeVideo = true;
@@ -420,8 +420,7 @@ class _HomePageState extends State<HomePage> {
                                         setState(() {
                                           quieroVideo = !quieroVideo;
                                           quieroMp3 = false;
-                                          urlDescarga =
-                                              resultado["mp4"]["result"];
+                                          urlDescarga = resultado["video"];
                                         });
                                       }),
                                   const Text(
@@ -439,8 +438,7 @@ class _HomePageState extends State<HomePage> {
                                         setState(() {
                                           quieroVideo = false;
                                           quieroMp3 = !quieroMp3;
-                                          urlDescarga =
-                                              resultado["mp3"]["result"];
+                                          urlDescarga = resultado["audio"];
                                         });
                                       }),
                                   const Text(
